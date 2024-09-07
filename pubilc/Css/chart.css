@@ -1,0 +1,41 @@
+/* Reset some default browser styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Main container */
+.container_chart {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Chart container */
+.container_Mixed_chart_types {
+    flex: 2;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-right: 10px;
+    /* Height for demonstration purposes */
+    height: 300px;
+}
+
+/* Subtitle or plugin container */
+.container_Subtitle_plugin {
+    flex: 1;
+    background-color: #e0e0e0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    /* Height for demonstration purposes */
+    height: 300px;
+}
+
+/* Styling for chart content */
+#chart {
+    /* Styling for chart area */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 100%;
+}

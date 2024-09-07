@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIDI TSU</title>
+    <link rel="shortcut icon" href="/images/science_en.png" type="image/x-icon">
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/style-std-form.css">
+    <link rel="stylesheet" href="/Css/nav_bar.css">
+    <link rel="stylesheet" href="/Css/std.css">
+    <style>
+        /* Hide forms initially */
+        .login-container,
+        .register-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="/images/science_en.png" alt="MySite Logo" class="logo-img"></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <div class="student-form">
+            <form action="/student/submit" method="post">
+                <h2>Student Information</h2>
+        
+                <!-- Student ID -->
+                <div class="form-group">
+                    <label for="std_id">รหัสนิสิต</label>
+                    <input type="text" id="std_id" name="std_id" placeholder="Enter student ID" required>
+                </div>
+        
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="Prefix">คำนำหน้า</label>
+                    <button type="button" class="btn" data-group="prefix" data-value="Mr.">นาย</button>
+                    <button type="button" class="btn" data-group="prefix" data-value="Ms.">นางสาว</button>
+                </div>
+                <div class="form-group">
+                    <label for="std_Fname">ชื่อ</label>
+                    <input type="text" id="std_Fname" name="std_Fname" placeholder="Enter first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_Lname">นามสกุล</label>
+                    <input type="text" id="std_Lname" name="std_Lname" placeholder="Enter last name" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_Nickname">ชื่อเล่น:</label>
+                    <input type="text" id="std_Nickname" name="std_Nickname" placeholder="Enter nickname">
+                </div>
+                <div class="form-group">
+                    <label for="std_religion">ศาสนา:</label>
+                    <button type="button" class="btn" data-group="religion" data-value="0">ศาสนาคริสต์</button>
+                    <button type="button" class="btn" data-group="religion" data-value="1">ศาสนาอิสลาม</button>
+                    <button type="button" class="btn" data-group="religion" data-value="2">ศาสนาพุทธ</button>
+                    <button type="button" class="btn" data-group="religion" data-value="3">ศาสนาฮินดู</button>
+                </div>
+                <div class="form-group">
+                    <label for="major">หลักสูตร</label>
+                    <button type="button" class="btn" data-group="major" data-value="0">วท.บ.เคมี</button>
+                    <button type="button" class="btn" data-group="major" data-value="1">วท.บ.วิทยาศาสตร์สิ่งแวดล้อม</button>
+                    <button type="button" class="btn" data-group="major" data-value="2">วท.บ.คณิตศาสตร์และการจัดการข้อมูล</button>
+                    <button type="button" class="btn" data-group="major" data-value="3">วท.บ.วิทยาการคอมพิวเตอร์และสารสนเทศ</button>
+                    <button type="button" class="btn" data-group="major" data-value="4">วท.บ.วท.บ.ชีววิทยาศาสตร์</button>
+                    <button type="button" class="btn" data-group="major" data-value="5">วท.บ.วท.บ.คณิตศาสตร์และการจัดการข้อมูล ร่วมกับ วท.บ.วิทยาการคอมพิวเตอร์และสารสนเทศ</button>
+                </div>
+                <div class="form-group">
+                    <label for="std_tel">เบอร์โทร</label>
+                    <input type="tel" id="std_tel" name="std_tel" placeholder="Enter telephone number" required>
+                </div>
+        
+                <!-- Allergies Information -->
+                <div class="form-group">
+                    <label for="allergic_things">อาหารที่แพ้</label>
+                    <input type="text" id="allergic_things" name="allergic_things" placeholder="Enter things you're allergic to">
+                </div>
+                <div class="form-group">
+                    <label for="allergic_drugs">ประวัติการแพ้ยา</label>
+                    <input type="text" id="allergic_drugs" name="allergic_drugs" placeholder="Enter drugs you're allergic to">
+                </div>
+                <div class="form-group">
+                    <label for="allergic_condition">ประวัติทางการแพทย์</label>
+                    <textarea id="allergic_condition" name="allergic_condition" placeholder="Describe allergic condition" rows="4"></textarea>
+                </div>
+        
+                <!-- School Information -->
+                <div class="form-group">
+                    <label for="sch_name">ชื่อโรงเรียนที่จบ</label>
+                    <input type="text" id="sch_name" name="sch_name" placeholder="Enter school name" required>
+                </div>
+                <div class="form-group">
+                    <label for="sch_province">จังหวัด</label>
+                    <input type="text" id="sch_province" name="sch_province" placeholder="Enter school province" required>
+                </div>
+        
+                <!-- Father Information -->
+                <div class="form-group">
+                    <label for="std_father_name">ชื่อบิดา</label>
+                    <input type="text" id="std_father_name" name="std_father_name" placeholder="Enter father's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_father_tel">เบอร์โทรศัพท์ของพ่อ</label>
+                    <input type="tel" id="std_father_tel" name="std_father_tel" placeholder="Enter father's telephone" required>
+                </div>
+        
+                <!-- Mother Information -->
+                <div class="form-group">
+                    <label for="std_mother_name">ชื่อมารดา</label>
+                    <input type="text" id="std_mother_name" name="std_mother_name" placeholder="Enter mother's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_mother_tel">เบอร์โทรศัพท์ของมารดา</label>
+                    <input type="tel" id="std_mother_tel" name="std_mother_tel" placeholder="Enter mother's telephone" required>
+                </div>
+        
+                <!-- Parent Information -->
+                <div class="form-group">
+                    <label for="std_parent_name">ชื่อผู้ปกครอง</label>
+                    <input type="text" id="std_parent_name" name="std_parent_name" placeholder="Enter parent's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_parent_tel">โทรศัพท์ผู้ปกครอง</label>
+                    <input type="tel" id="std_parent_tel" name="std_parent_tel" placeholder="Enter parent's telephone" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_parent_rela">ความสัมพันธ์ของผู้ปกครอง</label>
+                    <input type="text" id="std_parent_rela" name="std_parent_rela" placeholder="Enter relationship with student" required>
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+        
+        
+    </div>
+
+    <script src="/Js/script.js"></script>
+    <script src="/Js/nav-bar.js"></script>
+</body>
+
+</html>

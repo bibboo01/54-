@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIDI TSU</title>
+    <link rel="shortcut icon" href="/images/science_en.png" type="image/x-icon">
+    <link rel="stylesheet" href="/Css/nav_bar.css">
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/chart.css">
+    <link rel="stylesheet" href="/Css/std.css">
+    
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#"><img src="/images/science_en.png" alt="MySite Logo" class="logo-img"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" id="sign-up-btn">Sign Up</a></li>
+            <li><a href="#" id="sign-in-btn">Sign In</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
+        </div>
+    </nav>
+
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <div class="login-container modal-container" id="login-container">
+        <button class="close-btn" onclick="closeForm('login')">×</button>
+        <form class="login-form" action="/auth/login" method="post">
+            <h2 style="text-align: center;">Login</h2>
+            <div class="form-group">
+                <label for="username-login">Username</label>
+                <input type="text" id="username-login" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password-login">Password</label>
+                <input type="password" id="password-login" name="password" required>
+            </div>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <div class="register-container modal-container" id="register-container">
+        <button class="close-btn" onclick="closeForm('register')">×</button>
+        <form class="register-form" action="/auth/register" method="post">
+            <h2 style="text-align: center;">Register</h2>
+            <div class="form-group">
+                <label for="username-register">Username</label>
+                <input type="text" id="username-register" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password-register">Password</label>
+                <input type="password" id="password-register" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email-register">Email</label>
+                <input type="email" id="email-register" name="email" required>
+            </div>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <div class="container_chart">
+        <div class="chart-container">
+            <h2>Doughnut and Pie Charts</h2>
+            <canvas id="doughnutChart"></canvas>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Line Chart</h2>
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Bar Chart</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+        integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/Js/chart.js"></script>
+    <script src="/Js/script.js"></script>
+
+</body>
+</html>

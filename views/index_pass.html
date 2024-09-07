@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIDI TSU</title>
+    <link rel="shortcut icon" href="/images/science_en.png" type="image/x-icon">
+    <link rel="stylesheet" href="/Css/nav_bar.css">
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/chart.css">
+    <link rel="stylesheet" href="/Css/std.css">
+    <link rel="stylesheet" href="/Css/profile.css">
+
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#"><img src="/images/science_en.png" alt="MySite Logo" class="logo-img"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search" name="search" placeholder="Search student info...">
+            <button onclick="searchStudent()">Search</button>
+        </div>
+        <div class="profile-section">
+            <a href="#" id="profile-link" class="profile-link" onclick="showProfile()">Profile</a>
+            <!-- <div id="profileMenu" class="profile-menu">
+                <a href="#">ออกรายงาน</a>
+                <a href="/form">กรอกข้อมูลนิสิต</a>
+                <a href="/std/manage">จัดการข้อมูลนิสิต</a>
+                <a href="/" id="logoutButton">Logout</a>
+            </div> -->
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
+        </div>
+    </nav>
+    
+
+
+
+
+
+
+    <!-- Profile Section -->
+    <div id="profileSection" style="display: none;">
+        <h1>Profile</h1>
+        <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <p><strong>Role:</strong> <span id="profileRole"></span></p>
+        <button onclick="showUserManagement()">Back to User Management</button>
+    </div>
+
+
+
+    <div class="container_chart">
+        <div class="chart-container">
+            <h2>Doughnut and Pie Charts</h2>
+            <canvas id="doughnutChart"></canvas>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Line Chart</h2>
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Bar Chart</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+            <h2>Profile</h2>
+            <div class="profile-details">
+                <img src="/images/default-profile.png" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <span id="profileUsername">John Doe</span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></p>
+                    <p><strong>Role:</strong> <span id="profileRole">Admin</span></p>
+                </div>
+            </div>
+            <button onclick="closeProfileModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+        integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/Js/chart.js"></script>
+    <script src="/Js/script.js"></script>
+    <script src="/Js/profile.js"></script>
+
+</body>
+
+</html>

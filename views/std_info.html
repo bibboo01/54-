@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIDI TSU</title>
+    <link rel="stylesheet" href="/Css/nav_bar.css">
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/std.css">
+    <link rel="stylesheet" href="/Css/profile.css">
+
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#"><img src="/images/science_en.png" alt="MySite Logo" class="logo-img"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search" name="search" placeholder="Search student info...">
+            <button onclick="searchStudent()">Search</button>
+        </div>
+        <div class="profile-section">
+            <a href="#" id="profile-link" class="profile-link" onclick="showProfile()">Profile</a>
+            <!-- <div id="profileMenu" class="profile-menu">
+                <a href="#">ออกรายงาน</a>
+                <a href="/form">กรอกข้อมูลนิสิต</a>
+                <a href="/std/manage">จัดการข้อมูลนิสิต</a>
+                <a href="/" id="logoutButton">Logout</a>
+            </div> -->
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
+        </div>
+    </nav>
+    <h1>Student Management Table</h1>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+
+    <!-- Modal for Student Details -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Student Details</h2>
+            <div id="studentDetails">
+                <!-- Student details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+            <h2>Profile</h2>
+            <div class="profile-details">
+                <img src="/images/default-profile.png" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <span id="profileUsername">John Doe</span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></p>
+                    <p><strong>Role:</strong> <span id="profileRole">Admin</span></p>
+                </div>
+            </div>
+            <button onclick="closeProfileModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal for Edit Form -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Edit Student Information</h2>
+            <form id="editForm">
+                <!-- Your form inputs go here -->
+                <label>Prefix:</label>
+                <div class="button-group" id="prefix_buttons">
+                    <button type="button" class="btn" data-group="prefix" data-value="0">นาย</button>
+                    <button type="button" class="btn" data-group="prefix" data-value="1">นางสาว</button>
+                </div>
+                <input type="hidden" id="std_id">
+                <label for="std_Fname">First Name:</label>
+                <input type="text" id="std_Fname" name="std_Fname" required>
+
+                <label for="std_Lname">Last Name:</label>
+                <input type="text" id="std_Lname" name="std_Lname" required>
+
+                <label for="std_tel">Phone Number:</label>
+                <input type="text" id="std_tel" name="std_tel" required>
+
+                <label for="std_father_name">Father's Name:</label>
+                <input type="text" id="std_father_name" name="std_father_name">
+
+                <label for="std_father_tel">Father's Phone:</label>
+                <input type="text" id="std_father_tel" name="std_father_tel">
+
+                <label for="std_mother_name">Mother's Name:</label>
+                <input type="text" id="std_mother_name" name="std_mother_name">
+
+                <label for="std_mother_tel">Mother's Phone:</label>
+                <input type="text" id="std_mother_tel" name="std_mother_tel">
+
+                <label for="std_parent_name">Parent's Name:</label>
+                <input type="text" id="std_parent_name" name="std_parent_name">
+
+                <label for="std_parent_tel">Parent's Phone:</label>
+                <input type="text" id="std_parent_tel" name="std_parent_tel">
+
+                <label for="std_parent_rela">Parent's Relation:</label>
+                <input type="text" id="std_parent_rela" name="std_parent_rela">
+
+                <label for="allergic_things">Allergic Things:</label>
+                <input type="text" id="allergic_things" name="allergic_things">
+
+                <label for="allergic_drugs">Allergic Drugs:</label>
+                <input type="text" id="allergic_drugs" name="allergic_drugs">
+
+                <label for="allergic_condition">Allergic Condition:</label>
+                <input type="text" id="allergic_condition" name="allergic_condition">
+
+                <label for="sch_name">School Name:</label>
+                <input type="text" id="sch_name" name="sch_name">
+
+                <label for="sch_province">School Province:</label>
+                <input type="text" id="sch_province" name="sch_province">
+
+                <label>Major:</label>
+                <div class="button-group" id="major_buttons">
+                    <button type="button" class="btn" data-group="major" data-value="0">วท.บ.เคมี</button>
+                    <button type="button" class="btn" data-group="major"
+                        data-value="1">วท.บ.วิทยาศาสตร์สิ่งแวดล้อม</button>
+                    <button type="button" class="btn" data-group="major"
+                        data-value="2">วท.บ.คณิตศาสตร์และการจัดการข้อมูล</button>
+                    <button type="button" class="btn" data-group="major"
+                        data-value="3">วท.บ.วิทยาการคอมพิวเตอร์และสารสนเทศ</button>
+                    <button type="button" class="btn" data-group="major" data-value="4">วท.บ.ชีววิทยาศาสตร์</button>
+                    <button type="button" class="btn" data-group="major"
+                        data-value="5">วท.บ.คณิตศาสตร์และการจัดการข้อมูล ร่วมกับ
+                        วท.บ.วิทยาการคอมพิวเตอร์และสารสนเทศ</button>
+                </div>
+
+                <label for="std_nickname">Nickname:</label>
+                <input type="text" id="std_nickname" name="std_nickname">
+
+                <label>Religion:</label>
+                <div class="button-group" id="religion_buttons">
+                    <button type="button" class="btn" data-group="religion" data-value="0">คริสต์</button>
+                    <button type="button" class="btn" data-group="religion" data-value="1">อิสลาม</button>
+                    <button type="button" class="btn" data-group="religion" data-value="2">พุทธ</button>
+                    <button type="button" class="btn" data-group="religion" data-value="3">ฮินดู</button>
+                </div>
+
+                <!-- ... -->
+                <button type="button" onclick="submitEdit()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="/Js/std.js"></script>
+    <script src="/Js/profile.js"></script>
+</body>
+
+</html>

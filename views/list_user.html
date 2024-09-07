@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIDI TSU</title>
+    <link rel="stylesheet" href="/Css/style-list.css">
+    <link rel="stylesheet" href="/Css/nav_bar.css">
+    <link rel="stylesheet" href="/Css/style.css">
+    <link rel="stylesheet" href="/Css/std.css">
+    <link rel="stylesheet" href="/Css/profile.css">
+
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#"><img src="/images/science_en.png" alt="MySite Logo" class="logo-img"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search" name="search" placeholder="Search student info...">
+            <button onclick="searchStudent()">Search</button>
+        </div>
+        <div class="profile-section">
+            <a href="#" id="profile-link" class="profile-link" onclick="showProfile()">Profile</a>
+            <!-- <div id="profileMenu" class="profile-menu">
+                <a href="#">ออกรายงาน</a>
+                <a href="/form">กรอกข้อมูลนิสิต</a>
+                <a href="/std/manage">จัดการข้อมูลนิสิต</a>
+                <a href="/" id="logoutButton">Logout</a>
+            </div> -->
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
+        </div>
+    </nav>
+
+    <h1>User/Admin Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+            <!-- Rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeEditModal()">&times;</span>
+            <h2>Edit User</h2>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="0">Admin</option>
+                    <option value="1">User</option>
+                </select>
+                <button type="button" onclick="saveUser()">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+            <h2>Profile</h2>
+            <div class="profile-details">
+                <img src="/images/default-profile.png" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <span id="profileUsername">John Doe</span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></p>
+                    <p><strong>Role:</strong> <span id="profileRole">Admin</span></p>
+                </div>
+            </div>
+            <button onclick="closeProfileModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="/Js/list.js"></script>
+    <script src="/Js/profile.js"></script>
+</body>
+
+</html>
